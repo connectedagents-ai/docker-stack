@@ -1,0 +1,23 @@
+# OneWishOS Docker Stack — Agent Services
+# n8n, Khoj — to be configured
+#
+# Uncomment and configure when ready:
+#
+# services:
+#   n8n:
+#     image: n8nio/n8n:latest
+#     container_name: onewish-n8n
+#     restart: unless-stopped
+#     networks:
+#       - onewish-net
+#
+#   khoj:
+#     image: ghcr.io/khoj-ai/khoj:latest
+#     container_name: onewish-khoj
+#     restart: unless-stopped
+#     networks:
+#       - onewish-net
+#
+# networks:
+#   onewish-net:
+#     external: true

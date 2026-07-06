@@ -1,0 +1,33 @@
+################################################################
+# Prometheus — DevStack Monitoring Config
+# Robert Bailey / PowerConnection AI
+################################################################
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'devstack'
+
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Grafana
+  - job_name: 'grafana'
+    static_configs:
+      - targets: ['devstack-grafana:3000']
+
+  # Qdrant vector DB
+  - job_name: 'qdrant'
+    static_configs:
+      - targets: ['devstack-qdrant:6333']
+    metrics_path: '/metrics'
+
+  # n8n
+  - job_name: 'n8n'
+    static_configs:
+      - targets: ['devstack-n8n:5678']
+    metrics_path: '/metrics'

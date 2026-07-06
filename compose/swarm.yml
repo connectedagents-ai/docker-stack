@@ -1,0 +1,23 @@
+# OneWishOS Docker Stack — Swarm / Litigation Services
+# SwarmRICO Postgres, Neo4j — to be configured
+#
+# Uncomment and configure when ready:
+#
+# services:
+#   swarm-postgres:
+#     image: postgres:17-alpine
+#     container_name: onewish-swarm-postgres
+#     restart: unless-stopped
+#     networks:
+#       - onewish-net
+#
+#   neo4j:
+#     image: neo4j:5-community
+#     container_name: onewish-neo4j
+#     restart: unless-stopped
+#     networks:
+#       - onewish-net
+#
+# networks:
+#   onewish-net:
+#     external: true

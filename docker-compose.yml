@@ -1,0 +1,6 @@
+# OneWishOS Docker Stack — Root Compose
+# Uses Docker Compose v2 'include' to aggregate service files.
+# Add new service groups by appending to the include list.
+
+include:
+  - path: compose/core.yml

@@ -1,12 +1,17 @@
-node_modules/
-.next/
-dist/
-__pycache__/
-*.pyc
-.venv/
+# Secrets
 .env
-.DS_Store
-*.db
-*.log
-.sessions/
 
+# Data volumes (local only)
+data/
+backups/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Docker
+docker-compose.override.yml

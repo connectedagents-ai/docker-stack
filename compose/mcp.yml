@@ -1,0 +1,16 @@
+# OneWishOS Docker Stack — MCP Server Services
+# MCP servers — to be configured
+#
+# Uncomment and configure when ready:
+#
+# services:
+#   mcp-server:
+#     image: TBD
+#     container_name: onewish-mcp
+#     restart: unless-stopped
+#     networks:
+#       - onewish-net
+#
+# networks:
+#   onewish-net:
+#     external: true
