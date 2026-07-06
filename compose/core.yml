@@ -42,10 +42,9 @@ services:
     networks:
       - onewish-net
     healthcheck:
-      test: ["CMD", "wget", "--spider", "http://localhost:9000"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
+      disable: true
+      # Portainer CE is a scratch image with no shell or http tools.
+      # Health is verified externally via scripts/health-check.sh
 
   postgres:
     image: postgres:17-alpine
@@ -104,10 +103,11 @@ services:
     networks:
       - onewish-net
     healthcheck:
-      test: ["CMD", "wget", "--spider", "http://localhost:6333/healthz"]
+      test: ["CMD-SHELL", "bash -c 'echo > /dev/tcp/localhost/6333'"]
       interval: 15s
       timeout: 5s
-      retries: 3
+      retries: 5
+      start_period: 15s
 
 volumes:
   pgdata:
