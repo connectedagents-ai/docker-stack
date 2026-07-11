@@ -1,0 +1,35 @@
+# IntelligenceOS Neo4j — Discovery Engine Graph Database
+# This compose file manages the standalone Neo4j instance for the litigation pipeline.
+# Usage: docker compose -f docker-compose.intelligenceos.yml up -d
+
+services:
+  intelligenceos-neo4j:
+    image: neo4j:5-community
+    container_name: intelligenceos-neo4j
+    restart: unless-stopped
+    ports:
+      - "7475:7474"   # HTTP Browser
+      - "7688:7687"   # Bolt protocol
+    environment:
+      NEO4J_AUTH: neo4j/m3Xa9Bzpv4WI6GN84mEM
+      NEO4J_PLUGINS: '["apoc"]'
+      NEO4J_dbms_memory_heap_initial__size: 512m
+      NEO4J_dbms_memory_heap_max__size: 2G
+      NEO4J_apoc_export_file_enabled: "true"
+      NEO4J_apoc_import_file_enabled: "true"
+      NEO4J_apoc_import_file_use__neo4j__config: "true"
+    volumes:
+      - intelligenceos-neo4j-data:/data
+      - intelligenceos-neo4j-logs:/logs
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:7474 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  intelligenceos-neo4j-data:
+    name: intelligenceos-neo4j-data
+  intelligenceos-neo4j-logs:
+    name: intelligenceos-neo4j-logs
