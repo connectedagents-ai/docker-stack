@@ -1,0 +1,30 @@
+# OneWishOS Docker Stack — Monitoring Services
+# Grafana, Prometheus, Dozzle — to be configured
+#
+# Uncomment and configure when ready:
+#
+# services:
+#   grafana:
+#     image: grafana/grafana:latest
+#     container_name: onewish-grafana
+#     restart: unless-stopped
+#     networks:
+#       - onewish-net
+#
+#   prometheus:
+#     image: prom/prometheus:latest
+#     container_name: onewish-prometheus
+#     restart: unless-stopped
+#     networks:
+#       - onewish-net
+#
+#   dozzle:
+#     image: amir20/dozzle:latest
+#     container_name: onewish-dozzle
+#     restart: unless-stopped
+#     networks:
+#       - onewish-net
+#
+# networks:
+#   onewish-net:
+#     external: true
