@@ -1,0 +1,23 @@
+# OneWishOS Docker Stack — Custom Apps & Integrations
+
+services:
+  qb-connector:
+    build:
+      context: ../apps/qb-connector
+      dockerfile: Dockerfile
+    container_name: onewish-qb-connector
+    restart: unless-stopped
+    ports:
+      - "8085:8085"
+    volumes:
+      - /Users/robertbailey/.config/op:/root/.config/op:ro
+      - /Users/robertbailey/.op:/root/.op:ro
+    environment:
+      - PORT=8085
+      - OP_SERVICE_ACCOUNT_TOKEN=${OP_SERVICE_ACCOUNT_TOKEN}
+    networks:
+      - onewish-net
+
+networks:
+  onewish-net:
+    external: true
